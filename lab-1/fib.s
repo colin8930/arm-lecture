@@ -26,7 +26,7 @@ fibonacci:
 	 bl fibonacci @ Recursive call to fibonacci with R4 - 1 as parameter
 
 	 mov r5, r0 @ R5 = R0
-	 sub r0, r4, #2 @ R0 = R4 - 2
+	 subs r0, r4, #2 @ R0 = R4 - 2
 	 bl fibonacci  @ Recursive call to fibonacci with R4 - 2 as parameter
 
 	 adds r0, r5, r0 @ R0 = R5 + R0 (update flags)
