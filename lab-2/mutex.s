@@ -18,7 +18,7 @@ cmp r1, #unlocked   @ cmp to unlocked value
 strexeq r1, r2 , [r0]   @strex if equal
 cmpeq r1,#0
 
-bne .loop @if it's locked,continue the loop
+bne .loop @goto loop
 
 
         @ END CODE INSERT
