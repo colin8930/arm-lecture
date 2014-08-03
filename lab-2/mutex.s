@@ -9,15 +9,15 @@
 	.type lock_mutex, function
 lock_mutex:
         @ INSERT CODE BELOW
-  				ldr r2, =locked @ locked value	into temp reg
+	ldr r2, =locked @ locked value	into temp reg
 					
-					.loop:   @loop
-					ldrex r1, [r0]  @ lrdex from [r0]
-					cmp r1, #unlocked   @ cmp to unlocked value
-					bne .loop   @if it's locked,continue the loop
-					strex r1, r2, [r0]  @ r1 is 0 if successful or 1 if unsuccessful
-					cmp r1, #0 					
-					bx lr
+ .loop:   @loop
+	ldrex r1, [r0]  @ lrdex from [r0]
+	cmp r1, #unlocked   @ cmp to unlocked value
+	bne .loop   @if it's locked,continue the loop
+	strex r1, r2, [r0]  @ r1 is 0 if successful or 1 if unsuccessful
+	cmp r1, #0 					
+	bx lr
 
         @ END CODE INSERT
 	bx lr
@@ -28,9 +28,9 @@ lock_mutex:
 	.type unlock_mutex, function
 unlock_mutex:
 	@ INSERT CODE BELOW
-        ldr r2, =unlocked   @ load locked value
-					 str r2, [r0]   @ store r2 content into r0
- 					 bx lr
+	ldr r2, =unlocked   @ load locked value
+	str r2, [r0]   @ store r2 content into r0
+	bx lr
         @ END CODE INSERT
 	bx lr
 	.size unlock_mutex, .-unlock_mutex
