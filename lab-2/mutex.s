@@ -12,11 +12,13 @@ lock_mutex:
 ldr r2, =locked @ locked value	into temp reg
 
  .loop: @loop
-ldrex r1, [r0] @ lrdex from [r0]
-cmp r1, #unlocked @ cmp to unlocked value
-bne .loop @if it's locked,continue the loop
-str r2, [r0]
+ldr r1, [r0] @ lrdex from [r0]
+cmp r1, #unlocked   @ cmp to unlocked value
 
+streq r1, r2 , [r0]   @strex if equal
+cmpeq r1,#0
+
+bne .loop @goto loop
 
 
         @ END CODE INSERT
