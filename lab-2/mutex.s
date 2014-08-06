@@ -12,10 +12,10 @@ lock_mutex:
 ldr r2, =locked @ locked value	into temp reg
 
  .loop: @loop
-ldr r1, [r0] @ lrdex from [r0]
+ldrex r1, [r0] @ lrdex from [r0]
 cmp r1, #unlocked   @ cmp to unlocked value
 
-streq r1, r2 , [r0]   @strex if equal
+strexeq r1, r2 , [r0]   @strex if equal
 cmpeq r1,#0
 
 bne .loop @goto loop
@@ -32,7 +32,7 @@ unlock_mutex:
 @ INSERT CODE BELOW
 ldr r2, =unlocked @ load locked value
 str r2, [r0] @ store r2 content into r0
-bx lr
+
         @ END CODE INSERT
 bx lr
 .size unlock_mutex, .-unlock_mutex
