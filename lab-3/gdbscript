@@ -1,0 +1,14 @@
+target remote :1234
+b 11
+c
+step
+bt
+i r r0 r3 r4 sp pc lr
+b fibonacci
+c
+display/32xw $sp
+while 1
+i r r3 r4 r5 pc lr
+c
+
+
