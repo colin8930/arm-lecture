@@ -6,9 +6,13 @@ bt
 i r r0 r3 r4 sp pc lr
 b fibonacci
 c
-display/32xw $sp
+display/32xw $sp 
+display/x $r3 
+display/x $r4 
+display/x $r5 
+display/i $pc
+display/x $lr
 while 1
-i r r3 r4 r5 pc lr
 c
 
 
