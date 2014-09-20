@@ -19,15 +19,15 @@ fibonacci:
 .loop:
 	
 	adds r6, r4, r3 	// R6 = R4 + R3 sum=result+previous 
-	movs r3, r4
-	movs r4, r6
+	movs r3, r4		//previous = result
+	movs r4, r6		//result = sum
 	adds r5, #1  //i++	
 	cmp r5, r0
-	ble .loop
+	ble .loop		 //when i<=x, continue the loop
 
 	mov r0 ,r4
 
-bx lr
+	bx lr
 
 	.size fibonacci, .-fibonacci
 	.end
