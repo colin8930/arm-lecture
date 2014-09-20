@@ -11,13 +11,13 @@
 fibonacci:
 	@ ADD/MODIFY CODE BELOW
 	@ PROLOG
-	movs r3, #-1  //pervios
+	mov r3, #-1  //pervios
 	mov r4, #1			//result
 	mov r5, #0			//i
 
 .loop:
 	
-	adds r6, r4, r3 	// R6 = R4 + R3 sum=result+previous 
+	add r6, r4, r3 	// R6 = R4 + R3 sum=result+previous 
 	mov r3, r4		//previous = result
 	mov r4, r6		//result = sum
 	add r5, #1  //i++	
