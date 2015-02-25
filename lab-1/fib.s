@@ -11,7 +11,7 @@
 fibonacci:
 	@ ADD/MODIFY CODE BELOW
 	@ PROLOG
-	push { lr }
+	@push { lr }
 	mov r3, #-1	@pervios
 	mov r4, #1	@result
 	mov r5, #0	@i
@@ -26,9 +26,9 @@ fibonacci:
 	cmp r5, r0
 	ite gt
 	movgt r0 ,r4
-	blle .loop 	@when i<=x, continue the loop
+	ble .loop 	@when i<=x, continue the loop
 
-	pop { pc }
-
+	@pop { pc }
+	bx lr
 	.size fibonacci, .-fibonacci
 	.end
